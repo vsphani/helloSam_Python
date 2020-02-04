@@ -1,0 +1,12 @@
+version: 0.2
+phases:
+  build:
+    commands:
+      - echo Build started on 'date'
+      - export BUCKET=aws-sam-cli-managed-default-samclisourcebucket-1oxes7sv8f50a
+      - aws cloudformation package --template-file template.yml --s3-bucket $BUCKET --output-template-file outputtemplate.yml
+artifacts:
+    type: zip
+    files:
+       - template.yaml
+       - outputtemplate.yml
